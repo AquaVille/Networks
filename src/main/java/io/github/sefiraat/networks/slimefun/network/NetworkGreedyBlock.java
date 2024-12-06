@@ -32,12 +32,14 @@ public class NetworkGreedyBlock extends NetworkObject {
         6,7,8,15,17,24,25,26
     };
 
-    private static final CustomItemStack TEMPLATE_BACKGROUND_STACK = new CustomItemStack(
+    private static final SlimefunItemStack TEMPLATE_BACKGROUND_STACK = new SlimefunItemStack(
+            "TEMPLATE_BACKGROUND_STACK",
         Material.GREEN_STAINED_GLASS_PANE,
         Theme.SUCCESS + "Store items matching"
     );
 
-    private static final CustomItemStack STORAGE_BACKGROUND_STACK = new CustomItemStack(
+    private static final SlimefunItemStack STORAGE_BACKGROUND_STACK = new SlimefunItemStack(
+            "STORAGE_BACKGROUND_STACK",
         Material.ORANGE_STAINED_GLASS_PANE,
         Theme.SUCCESS + "Storage"
     );
@@ -55,8 +57,8 @@ public class NetworkGreedyBlock extends NetworkObject {
             @Override
             public void init() {
                 drawBackground(BACKGROUND_SLOTS);
-                drawBackground(TEMPLATE_BACKGROUND_STACK, BACKGROUND_SLOTS_TEMPLATE);
-                drawBackground(STORAGE_BACKGROUND_STACK, BACKGROUND_SLOTS_INPUT);
+                drawBackground(TEMPLATE_BACKGROUND_STACK.item(), BACKGROUND_SLOTS_TEMPLATE);
+                drawBackground(STORAGE_BACKGROUND_STACK.item(), BACKGROUND_SLOTS_INPUT);
             }
 
             @Override

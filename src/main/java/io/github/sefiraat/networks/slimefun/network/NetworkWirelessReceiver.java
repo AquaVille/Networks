@@ -37,7 +37,8 @@ public class NetworkWirelessReceiver extends NetworkObject {
         3, 4, 5, 12, 14, 21, 22, 23
     };
 
-    private static final CustomItemStack RECEIVED_BACKGROUND_STACK = new CustomItemStack(
+    private static final SlimefunItemStack RECEIVED_BACKGROUND_STACK = new SlimefunItemStack(
+            "RECEIVED_BACKGROUND_STACK",
         Material.GREEN_STAINED_GLASS_PANE,
         Theme.SUCCESS + "Received items"
     );
@@ -93,7 +94,7 @@ public class NetworkWirelessReceiver extends NetworkObject {
             @Override
             public void init() {
                 drawBackground(BACKGROUND_SLOTS);
-                drawBackground(RECEIVED_BACKGROUND_STACK, RECEIVED_SLOTS_TEMPLATE);
+                drawBackground(RECEIVED_BACKGROUND_STACK.item(), RECEIVED_SLOTS_TEMPLATE);
             }
 
             @Override

@@ -42,27 +42,32 @@ import java.util.Map;
 
 public abstract class AbstractGrid extends NetworkObject {
 
-    private static final CustomItemStack BLANK_SLOT_STACK = new CustomItemStack(
+    private static final SlimefunItemStack BLANK_SLOT_STACK = new SlimefunItemStack(
+            "BLANK_SLOT_STACK",
         Material.LIGHT_GRAY_STAINED_GLASS_PANE,
         " "
     );
 
-    private static final CustomItemStack PAGE_PREVIOUS_STACK = new CustomItemStack(
+    private static final SlimefunItemStack PAGE_PREVIOUS_STACK = new SlimefunItemStack(
+            "PAGE_PREVIOUS_STACK",
         Material.RED_STAINED_GLASS_PANE,
         Theme.CLICK_INFO.getColor() + "Previous Page"
     );
 
-    private static final CustomItemStack PAGE_NEXT_STACK = new CustomItemStack(
+    private static final SlimefunItemStack PAGE_NEXT_STACK = new SlimefunItemStack(
+            "PAGE_NEXT_STACK",
         Material.RED_STAINED_GLASS_PANE,
         Theme.CLICK_INFO.getColor() + "Next Page"
     );
 
-    private static final CustomItemStack CHANGE_SORT_STACK = new CustomItemStack(
+    private static final SlimefunItemStack CHANGE_SORT_STACK = new SlimefunItemStack(
+            "CHANGE_SORT_STACK",
         Material.BLUE_STAINED_GLASS_PANE,
         Theme.CLICK_INFO.getColor() + "Change Sort Order"
     );
 
-    private static final CustomItemStack FILTER_STACK = new CustomItemStack(
+    private static final SlimefunItemStack FILTER_STACK = new SlimefunItemStack(
+            "FILTER_STACK",
         Material.NAME_TAG,
         Theme.CLICK_INFO.getColor() + "Set Filter (Right Click to Clear)"
     );
@@ -197,7 +202,7 @@ public abstract class AbstractGrid extends NetworkObject {
                     return false;
                 });
             } else {
-                blockMenu.replaceExistingItem(getDisplaySlots()[i], BLANK_SLOT_STACK);
+                blockMenu.replaceExistingItem(getDisplaySlots()[i], BLANK_SLOT_STACK.item());
                 blockMenu.addMenuClickHandler(getDisplaySlots()[i], (p, slot, item, action) -> false);
             }
         }
@@ -205,7 +210,7 @@ public abstract class AbstractGrid extends NetworkObject {
 
     protected void clearDisplay(BlockMenu blockMenu) {
         for (int displaySlot : getDisplaySlots()) {
-            blockMenu.replaceExistingItem(displaySlot, BLANK_SLOT_STACK);
+            blockMenu.replaceExistingItem(displaySlot, BLANK_SLOT_STACK.item());
             blockMenu.addMenuClickHandler(displaySlot, (p, slot, item, action) -> false);
         }
     }
@@ -350,23 +355,23 @@ public abstract class AbstractGrid extends NetworkObject {
 
     protected abstract int getFilterSlot();
 
-    protected CustomItemStack getBlankSlotStack() {
+    protected SlimefunItemStack getBlankSlotStack() {
         return BLANK_SLOT_STACK;
     }
 
-    protected CustomItemStack getPagePreviousStack() {
+    protected SlimefunItemStack getPagePreviousStack() {
         return PAGE_PREVIOUS_STACK;
     }
 
-    protected CustomItemStack getPageNextStack() {
+    protected SlimefunItemStack getPageNextStack() {
         return PAGE_NEXT_STACK;
     }
 
-    protected CustomItemStack getChangeSortStack() {
+    protected SlimefunItemStack getChangeSortStack() {
         return CHANGE_SORT_STACK;
     }
 
-    protected CustomItemStack getFilterStack() {
+    protected SlimefunItemStack getFilterStack() {
         return FILTER_STACK;
     }
 

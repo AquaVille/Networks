@@ -33,7 +33,8 @@ public class NetworkPowerDisplay extends NetworkObject {
     };
     private static final int DISPLAY_SLOT = 4;
 
-    private static final CustomItemStack EMPTY = new CustomItemStack(
+    private static final SlimefunItemStack EMPTY = new SlimefunItemStack(
+            "EMPTY",
         Material.RED_STAINED_GLASS_PANE,
         Theme.CLICK_INFO + "Status",
         Theme.PASSIVE + "Disconnected"
@@ -65,7 +66,7 @@ public class NetworkPowerDisplay extends NetworkObject {
             final NodeDefinition definition = NetworkStorage.getAllNetworkObjects().get(blockMenu.getLocation());
 
             if (definition.getNode() == null) {
-                blockMenu.replaceExistingItem(DISPLAY_SLOT, EMPTY);
+                blockMenu.replaceExistingItem(DISPLAY_SLOT, EMPTY.item());
                 return;
             }
 
@@ -98,11 +99,12 @@ public class NetworkPowerDisplay extends NetworkObject {
         };
     }
 
-    private static CustomItemStack getChargeStack(long charge) {
-        return new CustomItemStack(
+    private static ItemStack getChargeStack(long charge) {
+        return new SlimefunItemStack(
+                "CHARGE_STACK",
             Material.GREEN_STAINED_GLASS_PANE,
             Theme.CLICK_INFO + "Status",
             Theme.PASSIVE + "Current Network Charge: " + charge + "j"
-        );
+        ).item();
     }
 }

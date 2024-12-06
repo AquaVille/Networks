@@ -35,14 +35,17 @@ public enum Theme {
 
     @Getter
     protected static final Theme[] cachedValues = values();
+
+    @Getter
     private final ChatColor color;
+
+    @Getter
     private final String loreLine;
 
     @ParametersAreNonnullByDefault
     Theme(ChatColor color, String loreLine) {
         this.color = color;
         this.loreLine = loreLine;
-
     }
 
     @Nonnull
@@ -132,11 +135,12 @@ public enum Theme {
         }
         finalLore.add("");
         finalLore.add(applyThemeToString(Theme.CLICK_INFO, themeType.getLoreLine()));
-        return new CustomItemStack(
+        return new SlimefunItemStack(
+                "THEME",
             material,
             Theme.applyThemeToString(themeType, name),
             finalLore.toArray(new String[finalLore.size() - 1])
-        );
+        ).item();
     }
 
 

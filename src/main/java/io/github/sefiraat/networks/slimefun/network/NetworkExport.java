@@ -39,12 +39,14 @@ public class NetworkExport extends NetworkObject {
     private static final int OUTPUT_ITEM_SLOT = 24;
     private static final int[] OUTPUT_ITEM_BACKDROP = {14, 15, 16, 23, 25, 32, 33, 34};
 
-    private static final CustomItemStack TEST_BACKDROP_STACK = new CustomItemStack(
+    private static final SlimefunItemStack TEST_BACKDROP_STACK = new SlimefunItemStack(
+            "TEST_BACKDROP_STACK",
         Material.GREEN_STAINED_GLASS_PANE,
         Theme.SUCCESS + "Export Item Matching"
     );
 
-    private static final CustomItemStack OUTPUT_BACKDROP_STACK = new CustomItemStack(
+    private static final SlimefunItemStack OUTPUT_BACKDROP_STACK = new SlimefunItemStack(
+            "OUTPUT_BACKDROP_STACK",
         Material.ORANGE_STAINED_GLASS_PANE,
         Theme.SUCCESS + "Output Slot"
     );
@@ -124,8 +126,8 @@ public class NetworkExport extends NetworkObject {
             @Override
             public void init() {
                 drawBackground(BACKGROUND_SLOTS);
-                drawBackground(TEST_BACKDROP_STACK, TEST_ITEM_BACKDROP);
-                drawBackground(OUTPUT_BACKDROP_STACK, OUTPUT_ITEM_BACKDROP);
+                drawBackground(TEST_BACKDROP_STACK.item(), TEST_ITEM_BACKDROP);
+                drawBackground(OUTPUT_BACKDROP_STACK.item(), OUTPUT_ITEM_BACKDROP);
             }
 
             @Override
