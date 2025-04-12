@@ -86,7 +86,7 @@ public class NetworkPusher extends NetworkDirectional {
             for (int slot : slots) {
                 final ItemStack itemStack = targetMenu.getItemInSlot(slot);
 
-                if (itemStack != null && itemStack.getType() != Material.AIR) {
+                if (itemStack != null && itemRequest != null && itemStack.getType() != Material.AIR) {
                     final int space = itemStack.getMaxStackSize() - itemStack.getAmount();
                     if (space > 0 && StackUtils.itemsMatch(itemRequest, itemStack, true)) {
                         itemRequest.setAmount(space);
