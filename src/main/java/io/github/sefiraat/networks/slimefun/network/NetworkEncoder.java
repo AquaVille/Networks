@@ -48,12 +48,12 @@ public class NetworkEncoder extends NetworkObject {
 
     private static final int CHARGE_COST = 20000;
 
-    public static final SlimefunItemStack BLUEPRINT_BACK_STACK = new SlimefunItemStack("BLUEPRINT_BACK_STACK",
-        Material.BLUE_STAINED_GLASS_PANE, Theme.PASSIVE + "Blank Blueprint"
+    public static final ItemStack BLUEPRINT_BACK_STACK = CustomItemStack.create(
+            Material.BLUE_STAINED_GLASS_PANE, Theme.PASSIVE + "Blank Blueprint"
     );
 
-    public static final SlimefunItemStack ENCODE_STACK = new SlimefunItemStack("ENCODE_STACK",
-        Material.BLUE_STAINED_GLASS_PANE, Theme.PASSIVE + "Click to encode when valid"
+    public static final ItemStack ENCODE_STACK = CustomItemStack.create(
+            Material.BLUE_STAINED_GLASS_PANE, Theme.PASSIVE + "Click to encode when valid"
     );
 
     public NetworkEncoder(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
@@ -73,9 +73,9 @@ public class NetworkEncoder extends NetworkObject {
             @Override
             public void init() {
                 drawBackground(BACKGROUND);
-                drawBackground(BLUEPRINT_BACK_STACK.item(), BLUEPRINT_BACK);
+                drawBackground(BLUEPRINT_BACK_STACK, BLUEPRINT_BACK);
 
-                addItem(ENCODE_SLOT, ENCODE_STACK.item(), (player, i, itemStack, clickAction) -> false);
+                addItem(ENCODE_SLOT, ENCODE_STACK, (player, i, itemStack, clickAction) -> false);
             }
 
             @Override

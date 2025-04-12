@@ -39,10 +39,9 @@ public class NetworkPurger extends NetworkObject {
     private static final int TEST_ITEM_SLOT = 13;
     private static final int[] TEST_ITEM_BACKDROP = {3, 4, 5, 12, 14, 21, 22, 23};
 
-    private static final SlimefunItemStack TEST_BACKDROP_STACK = new SlimefunItemStack(
-            "TEST_BACKDROP_STACK",
-        Material.GREEN_STAINED_GLASS_PANE,
-        Theme.SUCCESS + "Purge Item Matching"
+    private static final ItemStack TEST_BACKDROP_STACK = CustomItemStack.create(
+            Material.GREEN_STAINED_GLASS_PANE,
+            Theme.SUCCESS + "Purge Item Matching"
     );
 
     private final ItemSetting<Integer> tickRate;
@@ -122,7 +121,7 @@ public class NetworkPurger extends NetworkObject {
             @Override
             public void init() {
                 drawBackground(BACKGROUND_SLOTS);
-                drawBackground(TEST_BACKDROP_STACK.item(), TEST_ITEM_BACKDROP);
+                drawBackground(TEST_BACKDROP_STACK, TEST_ITEM_BACKDROP);
             }
 
             @Override

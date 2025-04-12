@@ -52,12 +52,12 @@ public class NetworkAutoCrafter extends NetworkObject {
     private static final int BLUEPRINT_SLOT = 10;
     private static final int OUTPUT_SLOT = 16;
 
-    public static final SlimefunItemStack BLUEPRINT_BACKGROUND_STACK = new SlimefunItemStack("BLUEPRINT_BACKGROUND_STACK",
-        Material.BLUE_STAINED_GLASS_PANE, Theme.PASSIVE + "Crafting Blueprint"
+    public static final ItemStack BLUEPRINT_BACKGROUND_STACK = CustomItemStack.create(
+            Material.BLUE_STAINED_GLASS_PANE, Theme.PASSIVE + "Crafting Blueprint"
     );
 
-    public static final SlimefunItemStack OUTPUT_BACKGROUND_STACK = new SlimefunItemStack("OUTPUT_BACKGROUND_STACK",
-        Material.GREEN_STAINED_GLASS_PANE, Theme.PASSIVE + "Output"
+    public static final ItemStack OUTPUT_BACKGROUND_STACK = CustomItemStack.create(
+            Material.GREEN_STAINED_GLASS_PANE, Theme.PASSIVE + "Output"
     );
 
     private final int chargePerCraft;
@@ -253,8 +253,8 @@ public class NetworkAutoCrafter extends NetworkObject {
             @Override
             public void init() {
                 drawBackground(BACKGROUND_SLOTS);
-                drawBackground(BLUEPRINT_BACKGROUND_STACK.item(), BLUEPRINT_BACKGROUND);
-                drawBackground(OUTPUT_BACKGROUND_STACK.item(), OUTPUT_BACKGROUND);
+                drawBackground(BLUEPRINT_BACKGROUND_STACK, BLUEPRINT_BACKGROUND);
+                drawBackground(OUTPUT_BACKGROUND_STACK, OUTPUT_BACKGROUND);
             }
 
             @Override

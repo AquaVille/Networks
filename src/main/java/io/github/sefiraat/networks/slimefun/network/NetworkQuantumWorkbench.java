@@ -42,10 +42,9 @@ public class NetworkQuantumWorkbench extends SlimefunItem {
     private static final int CRAFT_SLOT = 23;
     private static final int OUTPUT_SLOT = 25;
 
-    private static final SlimefunItemStack CRAFT_BUTTON_STACK = new SlimefunItemStack(
-            "CRAFT_BUTTON_STACK",
-        Material.CRAFTING_TABLE,
-        Theme.CLICK_INFO + "Click to entangle"
+    private static final ItemStack CRAFT_BUTTON_STACK = CustomItemStack.create(
+            Material.CRAFTING_TABLE,
+            Theme.CLICK_INFO + "Click to entangle"
     );
 
     private static final Map<ItemStack[], ItemStack> RECIPES = new HashMap<>();
@@ -77,7 +76,7 @@ public class NetworkQuantumWorkbench extends SlimefunItem {
             @Override
             public void init() {
                 drawBackground(BACKGROUND_SLOTS);
-                addItem(CRAFT_SLOT, CRAFT_BUTTON_STACK.item(), (p, slot, item, action) -> false);
+                addItem(CRAFT_SLOT, CRAFT_BUTTON_STACK, (p, slot, item, action) -> false);
             }
 
             @Override

@@ -53,8 +53,8 @@ public class NetworkControlV extends NetworkDirectional {
 
     private final Set<BlockPosition> blockCache = new HashSet<>();
 
-    public static final SlimefunItemStack TEMPLATE_BACKGROUND_STACK = new SlimefunItemStack(
-        "TEMPLATE_BACKGROUND_STACK",Material.BLUE_STAINED_GLASS_PANE, Theme.PASSIVE + "Paste items matching template"
+    public static final ItemStack TEMPLATE_BACKGROUND_STACK = CustomItemStack.create(
+            Material.BLUE_STAINED_GLASS_PANE, Theme.PASSIVE + "Paste items matching template"
     );
 
     public NetworkControlV(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
@@ -167,7 +167,7 @@ public class NetworkControlV extends NetworkDirectional {
     @Nullable
     @Override
     protected ItemStack getOtherBackgroundStack() {
-        return TEMPLATE_BACKGROUND_STACK.item();
+        return TEMPLATE_BACKGROUND_STACK;
     }
 
     @Override

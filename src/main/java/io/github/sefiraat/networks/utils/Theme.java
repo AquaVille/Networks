@@ -135,12 +135,11 @@ public enum Theme {
         }
         finalLore.add("");
         finalLore.add(applyThemeToString(Theme.CLICK_INFO, themeType.getLoreLine()));
-        return new SlimefunItemStack(
-                "THEME",
-            material,
-            Theme.applyThemeToString(themeType, name),
-            finalLore.toArray(new String[finalLore.size() - 1])
-        ).item();
+        return CustomItemStack.create(
+                material,
+                Theme.applyThemeToString(themeType, name),
+                finalLore.toArray(new String[finalLore.size() - 1])
+        );
     }
 
 

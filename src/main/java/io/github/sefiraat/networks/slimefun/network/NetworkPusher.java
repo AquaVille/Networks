@@ -37,8 +37,8 @@ public class NetworkPusher extends NetworkDirectional {
     private static final int UP_SLOT = 14;
     private static final int DOWN_SLOT = 32;
 
-    public static final SlimefunItemStack TEMPLATE_BACKGROUND_STACK = new SlimefunItemStack(
-        "TEMPLATE_BACKGROUND_STACK",Material.BLUE_STAINED_GLASS_PANE, Theme.PASSIVE + "Push items matching template"
+    public static final ItemStack TEMPLATE_BACKGROUND_STACK = CustomItemStack.create(
+            Material.BLUE_STAINED_GLASS_PANE, Theme.PASSIVE + "Push items matching template"
     );
 
     public NetworkPusher(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
@@ -122,7 +122,7 @@ public class NetworkPusher extends NetworkDirectional {
     @Nullable
     @Override
     protected ItemStack getOtherBackgroundStack() {
-        return TEMPLATE_BACKGROUND_STACK.item();
+        return TEMPLATE_BACKGROUND_STACK;
     }
 
     @Override

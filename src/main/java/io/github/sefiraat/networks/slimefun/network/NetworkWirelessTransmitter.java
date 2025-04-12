@@ -43,10 +43,9 @@ public class NetworkWirelessTransmitter extends NetworkObject {
         3, 4, 5, 12, 14, 21, 22, 23
     };
 
-    private static final SlimefunItemStack TEMPLATE_BACKGROUND_STACK = new SlimefunItemStack(
-            "TEMPLATE_BACKGROUND_STACK",
-        Material.GREEN_STAINED_GLASS_PANE,
-        Theme.SUCCESS + "Transmit items matching"
+    private static final ItemStack TEMPLATE_BACKGROUND_STACK = CustomItemStack.create(
+            Material.GREEN_STAINED_GLASS_PANE,
+            Theme.SUCCESS + "Transmit items matching"
     );
 
     private static final String LINKED_LOCATION_KEY_X = "linked-location-x";
@@ -196,7 +195,7 @@ public class NetworkWirelessTransmitter extends NetworkObject {
             @Override
             public void init() {
                 drawBackground(BACKGROUND_SLOTS);
-                drawBackground(TEMPLATE_BACKGROUND_STACK.item(), BACKGROUND_SLOTS_TEMPLATE);
+                drawBackground(TEMPLATE_BACKGROUND_STACK, BACKGROUND_SLOTS_TEMPLATE);
             }
 
             @Override

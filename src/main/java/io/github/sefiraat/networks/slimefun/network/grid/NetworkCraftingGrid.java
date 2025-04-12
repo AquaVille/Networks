@@ -50,12 +50,11 @@ public class NetworkCraftingGrid extends AbstractGrid {
     private static final int CRAFT_BUTTON_SLOT = 34;
     private static final int CRAFT_OUTPUT_SLOT = 43;
 
-    private static final SlimefunItemStack CRAFT_BUTTON_STACK = new SlimefunItemStack(
-            "CRAFT_BUTTON_STACK",
-        Material.CRAFTING_TABLE,
-        Theme.CLICK_INFO.getColor() + "Craft",
-        Theme.CLICK_INFO + "Left Click: " + Theme.PASSIVE + "Try to Craft",
-        Theme.CLICK_INFO + "Shift Left Click: " + Theme.PASSIVE + "Try to return items"
+    private static final ItemStack CRAFT_BUTTON_STACK = CustomItemStack.create(
+            Material.CRAFTING_TABLE,
+            Theme.CLICK_INFO.getColor() + "Craft",
+            Theme.CLICK_INFO + "Left Click: " + Theme.PASSIVE + "Try to Craft",
+            Theme.CLICK_INFO + "Shift Left Click: " + Theme.PASSIVE + "Try to return items"
     );
 
     private static final Map<Location, GridCache> CACHE_MAP = new HashMap<>();
@@ -99,7 +98,7 @@ public class NetworkCraftingGrid extends AbstractGrid {
             public void newInstance(@Nonnull BlockMenu menu, @Nonnull Block b) {
                 CACHE_MAP.put(menu.getLocation(), new GridCache(0, 0, GridCache.SortOrder.ALPHABETICAL));
 
-                menu.replaceExistingItem(getPagePrevious(), getPagePreviousStack().item());
+                menu.replaceExistingItem(getPagePrevious(), getPagePreviousStack());
                 menu.addMenuClickHandler(getPagePrevious(), (p, slot, item, action) -> {
                     GridCache gridCache = getCacheMap().get(menu.getLocation());
                     gridCache.setPage(gridCache.getPage() <= 0 ? 0 : gridCache.getPage() - 1);
@@ -107,7 +106,7 @@ public class NetworkCraftingGrid extends AbstractGrid {
                     return false;
                 });
 
-                menu.replaceExistingItem(getPageNext(), getPageNextStack().item());
+                menu.replaceExistingItem(getPageNext(), getPageNextStack());
                 menu.addMenuClickHandler(getPageNext(), (p, slot, item, action) -> {
                     GridCache gridCache = getCacheMap().get(menu.getLocation());
                     gridCache.setPage(gridCache.getPage() >= gridCache.getMaxPages() ? gridCache.getMaxPages() : gridCache.getPage() + 1);
@@ -115,7 +114,7 @@ public class NetworkCraftingGrid extends AbstractGrid {
                     return false;
                 });
 
-                menu.replaceExistingItem(getChangeSort(), getChangeSortStack().item());
+                menu.replaceExistingItem(getChangeSort(), getChangeSortStack());
                 menu.addMenuClickHandler(getChangeSort(), (p, slot, item, action) -> {
                     GridCache gridCache = getCacheMap().get(menu.getLocation());
                     if (gridCache.getSortOrder() == GridCache.SortOrder.ALPHABETICAL) {
@@ -127,7 +126,7 @@ public class NetworkCraftingGrid extends AbstractGrid {
                     return false;
                 });
 
-                menu.replaceExistingItem(getFilterSlot(), getFilterStack().item());
+                menu.replaceExistingItem(getFilterSlot(), getFilterStack());
                 menu.addMenuClickHandler(getFilterSlot(), (p, slot, item, action) -> {
                     GridCache gridCache = getCacheMap().get(menu.getLocation());
                     return setFilter(p, menu, gridCache, action);
@@ -138,7 +137,7 @@ public class NetworkCraftingGrid extends AbstractGrid {
                     menu.addMenuClickHandler(displaySlot, (p, slot, item, action) -> false);
                 }
 
-                menu.replaceExistingItem(CRAFT_BUTTON_SLOT, CRAFT_BUTTON_STACK.item());
+                menu.replaceExistingItem(CRAFT_BUTTON_SLOT, CRAFT_BUTTON_STACK);
                 menu.addMenuClickHandler(CRAFT_BUTTON_SLOT, (player, slot, item, action) -> {
                     if (action.isShiftClicked()) {
                         tryReturnItems(menu);

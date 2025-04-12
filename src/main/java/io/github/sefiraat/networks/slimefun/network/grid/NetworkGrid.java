@@ -73,7 +73,7 @@ public class NetworkGrid extends AbstractGrid {
             public void newInstance(@Nonnull BlockMenu menu, @Nonnull Block b) {
                 getCacheMap().put(menu.getLocation(), new GridCache(0, 0, GridCache.SortOrder.ALPHABETICAL));
 
-                menu.replaceExistingItem(getPagePrevious(), getPagePreviousStack().item());
+                menu.replaceExistingItem(getPagePrevious(), getPagePreviousStack());
                 menu.addMenuClickHandler(getPagePrevious(), (p, slot, item, action) -> {
                     GridCache gridCache = getCacheMap().get(menu.getLocation());
                     gridCache.setPage(gridCache.getPage() <= 0 ? 0 : gridCache.getPage() - 1);
@@ -81,7 +81,7 @@ public class NetworkGrid extends AbstractGrid {
                     return false;
                 });
 
-                menu.replaceExistingItem(getPageNext(), getPageNextStack().item());
+                menu.replaceExistingItem(getPageNext(), getPageNextStack());
                 menu.addMenuClickHandler(getPageNext(), (p, slot, item, action) -> {
                     GridCache gridCache = getCacheMap().get(menu.getLocation());
                     gridCache.setPage(gridCache.getPage() >= gridCache.getMaxPages() ? gridCache.getMaxPages() : gridCache.getPage() + 1);
@@ -89,7 +89,7 @@ public class NetworkGrid extends AbstractGrid {
                     return false;
                 });
 
-                menu.replaceExistingItem(getChangeSort(), getChangeSortStack().item());
+                menu.replaceExistingItem(getChangeSort(), getChangeSortStack());
                 menu.addMenuClickHandler(getChangeSort(), (p, slot, item, action) -> {
                     GridCache gridCache = getCacheMap().get(menu.getLocation());
                     if (gridCache.getSortOrder() == GridCache.SortOrder.ALPHABETICAL) {
@@ -101,7 +101,7 @@ public class NetworkGrid extends AbstractGrid {
                     return false;
                 });
 
-                menu.replaceExistingItem(getFilterSlot(), getFilterStack().item());
+                menu.replaceExistingItem(getFilterSlot(), getFilterStack());
                 menu.addMenuClickHandler(getFilterSlot(), (p, slot, item, action) -> {
                     GridCache gridCache = getCacheMap().get(menu.getLocation());
                     return setFilter(p, menu, gridCache, action);

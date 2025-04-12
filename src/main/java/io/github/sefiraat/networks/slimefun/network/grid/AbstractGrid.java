@@ -42,34 +42,29 @@ import java.util.Map;
 
 public abstract class AbstractGrid extends NetworkObject {
 
-    private static final SlimefunItemStack BLANK_SLOT_STACK = new SlimefunItemStack(
-            "BLANK_SLOT_STACK",
-        Material.LIGHT_GRAY_STAINED_GLASS_PANE,
-        " "
+    private static final ItemStack BLANK_SLOT_STACK = CustomItemStack.create(
+            Material.LIGHT_GRAY_STAINED_GLASS_PANE,
+            " "
     );
 
-    private static final SlimefunItemStack PAGE_PREVIOUS_STACK = new SlimefunItemStack(
-            "PAGE_PREVIOUS_STACK",
-        Material.RED_STAINED_GLASS_PANE,
-        Theme.CLICK_INFO.getColor() + "Previous Page"
+    private static final ItemStack PAGE_PREVIOUS_STACK = CustomItemStack.create(
+            Material.RED_STAINED_GLASS_PANE,
+            Theme.CLICK_INFO.getColor() + "Previous Page"
     );
 
-    private static final SlimefunItemStack PAGE_NEXT_STACK = new SlimefunItemStack(
-            "PAGE_NEXT_STACK",
-        Material.RED_STAINED_GLASS_PANE,
-        Theme.CLICK_INFO.getColor() + "Next Page"
+    private static final ItemStack PAGE_NEXT_STACK = CustomItemStack.create(
+            Material.RED_STAINED_GLASS_PANE,
+            Theme.CLICK_INFO.getColor() + "Next Page"
     );
 
-    private static final SlimefunItemStack CHANGE_SORT_STACK = new SlimefunItemStack(
-            "CHANGE_SORT_STACK",
-        Material.BLUE_STAINED_GLASS_PANE,
-        Theme.CLICK_INFO.getColor() + "Change Sort Order"
+    private static final ItemStack CHANGE_SORT_STACK = CustomItemStack.create(
+            Material.BLUE_STAINED_GLASS_PANE,
+            Theme.CLICK_INFO.getColor() + "Change Sort Order"
     );
 
-    private static final SlimefunItemStack FILTER_STACK = new SlimefunItemStack(
-            "FILTER_STACK",
-        Material.NAME_TAG,
-        Theme.CLICK_INFO.getColor() + "Set Filter (Right Click to Clear)"
+    private static final ItemStack FILTER_STACK = CustomItemStack.create(
+            Material.NAME_TAG,
+            Theme.CLICK_INFO.getColor() + "Set Filter (Right Click to Clear)"
     );
 
     private static final Comparator<Map.Entry<ItemStack, Integer>> ALPHABETICAL_SORT = Comparator.comparing(
@@ -202,7 +197,7 @@ public abstract class AbstractGrid extends NetworkObject {
                     return false;
                 });
             } else {
-                blockMenu.replaceExistingItem(getDisplaySlots()[i], BLANK_SLOT_STACK.item());
+                blockMenu.replaceExistingItem(getDisplaySlots()[i], BLANK_SLOT_STACK);
                 blockMenu.addMenuClickHandler(getDisplaySlots()[i], (p, slot, item, action) -> false);
             }
         }
@@ -210,7 +205,7 @@ public abstract class AbstractGrid extends NetworkObject {
 
     protected void clearDisplay(BlockMenu blockMenu) {
         for (int displaySlot : getDisplaySlots()) {
-            blockMenu.replaceExistingItem(displaySlot, BLANK_SLOT_STACK.item());
+            blockMenu.replaceExistingItem(displaySlot, BLANK_SLOT_STACK);
             blockMenu.addMenuClickHandler(displaySlot, (p, slot, item, action) -> false);
         }
     }
@@ -355,23 +350,23 @@ public abstract class AbstractGrid extends NetworkObject {
 
     protected abstract int getFilterSlot();
 
-    protected SlimefunItemStack getBlankSlotStack() {
+    protected ItemStack getBlankSlotStack() {
         return BLANK_SLOT_STACK;
     }
 
-    protected SlimefunItemStack getPagePreviousStack() {
+    protected ItemStack getPagePreviousStack() {
         return PAGE_PREVIOUS_STACK;
     }
 
-    protected SlimefunItemStack getPageNextStack() {
+    protected ItemStack getPageNextStack() {
         return PAGE_NEXT_STACK;
     }
 
-    protected SlimefunItemStack getChangeSortStack() {
+    protected ItemStack getChangeSortStack() {
         return CHANGE_SORT_STACK;
     }
 
-    protected SlimefunItemStack getFilterStack() {
+    protected ItemStack getFilterStack() {
         return FILTER_STACK;
     }
 
