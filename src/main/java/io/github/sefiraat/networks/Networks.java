@@ -10,8 +10,6 @@ import io.github.sefiraat.networks.slimefun.network.NetworkController;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.updater.BlobBuildUpdater;
 
-import org.bstats.bukkit.Metrics;
-import org.bstats.charts.AdvancedPie;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -56,8 +54,6 @@ public class Networks extends JavaPlugin implements SlimefunAddon {
 
         this.listenerManager = new ListenerManager();
         this.getCommand("networks").setExecutor(new NetworksMain());
-
-        setupMetrics();
     }
 
     public void tryUpdate() {
@@ -82,18 +78,6 @@ public class Networks extends JavaPlugin implements SlimefunAddon {
                 getLogger().severe("SlimeHUD must be updated to meet Networks' requirements.");
             }
         }
-    }
-
-    public void setupMetrics() {
-        final Metrics metrics = new Metrics(this, 13644);
-
-        AdvancedPie networksChart = new AdvancedPie("networks", () -> {
-            Map<String, Integer> networksMap = new HashMap<>();
-            networksMap.put("Number of networks", NetworkController.getNetworks().size());
-            return networksMap;
-        });
-
-        metrics.addCustomChart(networksChart);
     }
 
     @Nonnull

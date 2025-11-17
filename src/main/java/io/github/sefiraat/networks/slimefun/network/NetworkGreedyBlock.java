@@ -7,8 +7,7 @@ import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction;
+import io.github.bakedlibs.dough.items.CustomItemStack;import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 import me.mrCookieSlime.Slimefun.api.item_transport.ItemTransportFlow;
 import org.bukkit.Material;
@@ -32,12 +31,12 @@ public class NetworkGreedyBlock extends NetworkObject {
         6,7,8,15,17,24,25,26
     };
 
-    private static final ItemStack TEMPLATE_BACKGROUND_STACK = CustomItemStack.create(
+    private static final ItemStack TEMPLATE_BACKGROUND_STACK = new CustomItemStack(
             Material.GREEN_STAINED_GLASS_PANE,
             Theme.SUCCESS + "Store items matching"
     );
 
-    private static final ItemStack STORAGE_BACKGROUND_STACK = CustomItemStack.create(
+    private static final ItemStack STORAGE_BACKGROUND_STACK = new CustomItemStack(
             Material.ORANGE_STAINED_GLASS_PANE,
             Theme.SUCCESS + "Storage"
     );

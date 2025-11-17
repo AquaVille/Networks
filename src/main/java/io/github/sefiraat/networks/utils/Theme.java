@@ -1,8 +1,7 @@
 package io.github.sefiraat.networks.utils;
 
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
-import lombok.Getter;
+import io.github.bakedlibs.dough.items.CustomItemStack;import lombok.Getter;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Material;
@@ -135,7 +134,7 @@ public enum Theme {
         }
         finalLore.add("");
         finalLore.add(applyThemeToString(Theme.CLICK_INFO, themeType.getLoreLine()));
-        return CustomItemStack.create(
+        return new CustomItemStack(
                 material,
                 Theme.applyThemeToString(themeType, name),
                 finalLore.toArray(new String[finalLore.size() - 1])

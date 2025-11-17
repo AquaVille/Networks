@@ -66,51 +66,64 @@
     </properties>
 
     <build>
-        <finalName>${project.name}-${project.version}</finalName>
+        <defaultGoal>clean package</defaultGoal>
+        <finalName>${project.artifactId}</finalName>
+        <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
+
+        <resources>
+            <resource>
+                <targetPath>.</targetPath>
+                <filtering>true</filtering>
+                <directory>${basedir}/src/main/resources/</directory>
+            </resource>
+            <resource>
+                <directory>${basedir}</directory>
+
+                <includes>
+                    <include>LICENSE</include>
+                </includes>
+            </resource>
+        </resources>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>3.6.0</version>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
                 <configuration>
-                    <relocations>
-                        <relocation>
-                            <pattern>org.bstats</pattern>
-                            <shadedPattern>io.github.sefiraat.networks.bstats</shadedPattern>
-                        </relocation>
-                    </relocations>
-                    <filters>
-                        <filter>
-                            <artifact>*:*</artifact>
-                            <excludes>
-                                <exclude>META-INF/*</exclude>
-                            </excludes>
-                        </filter>
-                    </filters>
+                    <source>16</source>
+                    <target>16</target>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.3.0</version>
                 <executions>
                     <execution>
-                        <phase>package</phase>
                         <goals>
                             <goal>shade</goal>
                         </goals>
                     </execution>
                 </executions>
+
+                <configuration>
+                    <relocations>
+                        <!-- Temporary fix for Dough skin issue (November 2025) : START -->
+                        <relocation>
+                            <pattern>io.github.bakedlibs.dough</pattern>
+                            <shadedPattern>io.github.sefiraat.networks.libs.dough</shadedPattern>
+                        </relocation>
+                        <!-- Temporary fix for Dough skin issue (November 2025) : END -->
+                        <relocation>
+                            <pattern>dev.sefiraat.sefilib</pattern>
+                            <shadedPattern>io.github.sefiraat.networks.libs.sefilib</shadedPattern>
+                        </relocation>
+                    </relocations>
+                </configuration>
             </plugin>
         </plugins>
-        <defaultGoal>clean package</defaultGoal>
-        <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
-
-        <resources>
-            <resource>
-                <directory>${basedir}/src/main/resources</directory>
-                <filtering>true</filtering>
-                <includes>
-                    <include>**/*.*</include>
-                    <include>tags/*.json</include>
-                </includes>
-            </resource>
-        </resources>
     </build>
 
 
@@ -142,16 +155,22 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.21.1-R0.1-SNAPSHOT</version>
+            <version>1.21.10-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.github.Slimefun</groupId>
+            <groupId>com.github.SlimeFun-Lab</groupId>
             <artifactId>Slimefun4</artifactId>
-            <version>0a7fea8</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/Slimefun v4.9-UNOFFICIAL.jar</systemPath>
+            <version>experimental-SNAPSHOT</version>
+            <scope>provided</scope>
         </dependency>
+        <!-- Temporary fix for Dough skin issue (November 2025) : START -->
+        <dependency>
+            <groupId>com.github.StarWishsama</groupId>
+            <artifactId>dough</artifactId>
+            <version>0a06f6fcaef863c97e3c036ef2406e15691bae16</version> <!-- or a tag or commit hash -->
+        </dependency>
+        <!-- Temporary fix for Dough skin issue (November 2025) : END -->
         <dependency>
             <groupId>dev.sefiraat</groupId>
             <artifactId>SefiLib</artifactId>
@@ -161,15 +180,10 @@
 
         <!-- Tools etc. -->
         <dependency>
-            <groupId>org.bstats</groupId>
-            <artifactId>bstats-bukkit</artifactId>
-            <version>3.0.2</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
             <groupId>com.google.code.findbugs</groupId>
             <artifactId>annotations</artifactId>
             <version>3.0.1u2</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>

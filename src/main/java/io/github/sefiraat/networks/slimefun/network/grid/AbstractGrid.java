@@ -14,8 +14,7 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.items.settings.IntRangeSetting;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
-import io.github.thebusybiscuit.slimefun4.utils.ChatUtils;
+import io.github.bakedlibs.dough.items.CustomItemStack;import io.github.thebusybiscuit.slimefun4.utils.ChatUtils;
 import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ClickAction;
 import me.mrCookieSlime.Slimefun.Objects.handlers.BlockTicker;
@@ -42,27 +41,27 @@ import java.util.Map;
 
 public abstract class AbstractGrid extends NetworkObject {
 
-    private static final ItemStack BLANK_SLOT_STACK = CustomItemStack.create(
+    private static final ItemStack BLANK_SLOT_STACK = new CustomItemStack(
             Material.LIGHT_GRAY_STAINED_GLASS_PANE,
             " "
     );
 
-    private static final ItemStack PAGE_PREVIOUS_STACK = CustomItemStack.create(
+    private static final ItemStack PAGE_PREVIOUS_STACK = new CustomItemStack(
             Material.RED_STAINED_GLASS_PANE,
             Theme.CLICK_INFO.getColor() + "Previous Page"
     );
 
-    private static final ItemStack PAGE_NEXT_STACK = CustomItemStack.create(
+    private static final ItemStack PAGE_NEXT_STACK = new CustomItemStack(
             Material.RED_STAINED_GLASS_PANE,
             Theme.CLICK_INFO.getColor() + "Next Page"
     );
 
-    private static final ItemStack CHANGE_SORT_STACK = CustomItemStack.create(
+    private static final ItemStack CHANGE_SORT_STACK = new CustomItemStack(
             Material.BLUE_STAINED_GLASS_PANE,
             Theme.CLICK_INFO.getColor() + "Change Sort Order"
     );
 
-    private static final ItemStack FILTER_STACK = CustomItemStack.create(
+    private static final ItemStack FILTER_STACK = new CustomItemStack(
             Material.NAME_TAG,
             Theme.CLICK_INFO.getColor() + "Set Filter (Right Click to Clear)"
     );
