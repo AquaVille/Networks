@@ -2,10 +2,12 @@ package io.github.sefiraat.networks.managers;
 
 import com.google.common.base.Preconditions;
 import io.github.sefiraat.networks.Networks;
+import lombok.Getter;
 import org.bukkit.Bukkit;
 
 public class SupportedPluginManager {
 
+    @Getter
     private static SupportedPluginManager instance;
 
     private final boolean infinityExpansion;
@@ -13,7 +15,6 @@ public class SupportedPluginManager {
     private final boolean slimeHud;
 
     // region First Tick Only Registrations
-    private boolean mcMMO;
     private boolean wildChests;
 
     // endregion
@@ -32,7 +33,6 @@ public class SupportedPluginManager {
 
     private void firstTickRegistrations() {
         this.wildChests = Bukkit.getPluginManager().isPluginEnabled("WildChests");
-        this.mcMMO = Bukkit.getPluginManager().isPluginEnabled("mcMMO");
     }
 
     public boolean isInfinityExpansion() {
@@ -47,15 +47,8 @@ public class SupportedPluginManager {
         return slimeHud;
     }
 
-    public boolean isMcMMO() {
-        return mcMMO;
-    }
-
     public boolean isWildChests() {
         return wildChests;
     }
 
-    public static SupportedPluginManager getInstance() {
-        return instance;
-    }
 }

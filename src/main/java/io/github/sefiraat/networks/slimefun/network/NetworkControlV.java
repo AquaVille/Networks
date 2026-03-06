@@ -1,6 +1,5 @@
 package io.github.sefiraat.networks.slimefun.network;
 
-import com.gmail.nossr50.mcMMO;
 import dev.sefiraat.sefilib.misc.ParticleUtils;
 import dev.sefiraat.sefilib.world.LocationUtils;
 import io.github.bakedlibs.dough.blocks.BlockPosition;
@@ -139,9 +138,6 @@ public class NetworkControlV extends NetworkDirectional {
         this.blockCache.add(targetPosition);
         Bukkit.getScheduler().runTask(Networks.getInstance(), bukkitTask -> {
             targetBlock.setType(fetchedStack.getType(), true);
-            if (SupportedPluginManager.getInstance().isMcMMO()) {
-                mcMMO.getChunkManager().setTrue(targetBlock);
-            }
             ParticleUtils.displayParticleRandomly(
                 LocationUtils.centre(targetBlock.getLocation()),
                 Particle.ELECTRIC_SPARK,
