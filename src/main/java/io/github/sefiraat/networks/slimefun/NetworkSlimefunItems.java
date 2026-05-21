@@ -179,7 +179,7 @@ public class NetworkSlimefunItems {
             NetworksSlimefunItemStacks.SHRINKING_BASE,
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[]{
-                SlimefunItems.CORINTHIAN_BRONZE_INGOT.item(), SlimefunItems.ANDROID_INTERFACE_ITEMS.item(), SlimefunItems.CORINTHIAN_BRONZE_INGOT.item(),
+                SlimefunItems.CORINTHIAN_BRONZE_INGOT.item(), SlimefunItems.PROGRAMMABLE_ANDROID_2.item(), SlimefunItems.CORINTHIAN_BRONZE_INGOT.item(),
                 OPTIC_CABLE.getItem(), RADIOACTIVE_OPTIC_STAR.getItem(), OPTIC_CABLE.getItem(),
                 SlimefunItems.CORINTHIAN_BRONZE_INGOT.item(), SlimefunItems.ANDROID_MEMORY_CORE.item(), SlimefunItems.CORINTHIAN_BRONZE_INGOT.item()
             }
@@ -773,7 +773,7 @@ public class NetworkSlimefunItems {
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[]{
                 null, RADIOACTIVE_OPTIC_STAR.getItem(), null,
-                null, NETWORK_CRAYON.getItem(), null,
+                null, SIMPLE_NANOBOTS.getItem(), null,
                 null, AI_CORE.getItem(), null
             }
         );
